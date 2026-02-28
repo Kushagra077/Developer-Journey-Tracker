@@ -2,6 +2,7 @@ from models import CodingSession
 from manager import JournalManager
 from datetime import date
 from pydantic import ValidationError
+from visualizer import plot_energy
 
 manager = JournalManager()
 manager.load_from_file()
@@ -21,3 +22,7 @@ else:
 stats = manager.get_stats()
 print(f"Total coding minutes: {stats['total_minutes']}")
 print(f"Average energy level: {stats['average_energy']:.2f}")
+
+show_graph = input("Would you like to see your energy trend? (y/n): ").lower()
+if show_graph == 'y':
+    plot_energy(manager.sessions)
