@@ -13,5 +13,10 @@
         "date": "2026-02-28",
         "duration_minutes": 100,
         "energy_level": 8
+    },
+    {
+        "date": "2026-02-28",
+        "duration_minutes": 30,
+        "energy_level": 7
     }
 ]
