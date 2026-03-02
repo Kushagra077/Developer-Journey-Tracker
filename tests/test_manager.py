@@ -4,8 +4,11 @@ from manager import JournalManager
 from visualizer import plot_energy
 from datetime import date
 
-def test_add_session():
-    manager = JournalManager()
+def test_add_session(tmp_path):
+
+    filename = tmp_path / "test_journal.json"
+
+    manager = JournalManager(filename=str(filename))
     session = CodingSession(date=date.today(), duration_minutes=60, energy_level=5)
 
     manager.add_session(session)
@@ -14,8 +17,11 @@ def test_add_session():
     assert manager.sessions[0].duration_minutes == 60
     assert manager.sessions[0].energy_level == 5
 
-def test_get_stats_calculation():
-    manager = JournalManager()
+def test_get_stats_calculation(tmp_path):
+
+    filename = tmp_path / "test_journal.json"
+
+    manager = JournalManager(filename=str(filename))
     manager.add_session(CodingSession(date=date.today(), duration_minutes=100, energy_level=10))
     manager.add_session(CodingSession(date=date.today(), duration_minutes=50, energy_level=6))
 
